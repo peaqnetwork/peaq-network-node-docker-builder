@@ -12,7 +12,7 @@ RUN apt-get update && \
     ca-certificates curl file \
     build-essential \
     git clang curl libssl-dev llvm libudev-dev cmake \
-    autoconf automake autotools-dev libtool xutils-dev && \
+    autoconf automake autotools-dev libtool xutils-dev protobuf-compiler && \
     rm -rf /var/lib/apt/lists/*
 
 ENV SSL_VERSION=1.0.2u
@@ -38,6 +38,7 @@ RUN rustup update nightly
 RUN rustup target add wasm32-unknown-unknown --toolchain nightly
 RUN cargo install --git https://github.com/paritytech/cachepot
 RUN rustup toolchain add nightly-aarch64-apple-darwin
+RUN cargo install cargo-expand --locked --version 1.0.34
 
 RUN rustup component add rust-src --toolchain nightly-aarch64-apple-darwin && \
     apt-get update && \
