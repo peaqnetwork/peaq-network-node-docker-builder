@@ -1,3 +1,3 @@
 #!/bin/sh
-docker build -t rust-stable:ubuntu-20.04 .
+docker build --platform linux/amd64 -t rust-stable:ubuntu-20.04 .
 
