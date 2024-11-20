@@ -38,7 +38,7 @@ If we want to build the node which supports the EVM tracing module, we have to f
 cd ../peaq-network-node
 
 # Build runtime module
-docker run --rm -it --env CARGO_TARGET_DIR="/sources/target_runtime" -v $(pwd):/sources -w /sources rust-stable:ubuntu-20.04 cargo build --release -p peaq-node-runtime --features "std aura evm-tracing"
+docker run --rm -it --env CARGO_TARGET_DIR="/sources/target_runtime" -v $(pwd):/sources -w /sources rust-stable:ubuntu-20.04 cargo build --release -p peaq-runtime --features "std aura evm-tracing"
 # Build node
 docker run --rm -it -v $(pwd):/sources -w /sources rust-stable:ubuntu-20.04 cargo build --release
 ```
@@ -47,7 +47,7 @@ After building the runtime module and node, we can start a node by replacing the
 ```bash
 # Copy the runtime module
 mkdir -p wasm
-cp target_runtime/release/wbuild/peaq-node-runtime/peaq_node_runtime.wasm wasm
+cp target_runtime/release/wbuild/peaq-runtime/peaq_runtime.wasm wasm
 
 
 # Run the tracing node
