@@ -17,7 +17,7 @@ RUN apt-get update && \
 
 ENV SSL_VERSION=1.0.2u
 
-RUN curl https://www.openssl.org/source/openssl-$SSL_VERSION.tar.gz -O && \
+RUN curl -L https://www.openssl.org/source/openssl-$SSL_VERSION.tar.gz -O && \
     tar -xzf openssl-$SSL_VERSION.tar.gz && \
     cd openssl-$SSL_VERSION && ./config && make depend && make install && \
     cd .. && rm -rf openssl-$SSL_VERSION*
